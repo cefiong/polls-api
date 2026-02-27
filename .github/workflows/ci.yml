@@ -18,11 +18,11 @@ jobs:
         uses: setup-buildx-action@v3
 
       - name: Build docker image
-        run |
+        run: |
           docker build -t polls-api:latest .
 
       - name: Run image
-        run |
+        run: |
           docker -d -p 5001:5001 --name polls-api-container polls-api:latest
           sleep 5
           curl http://localhost:5001/api/health || exit 1

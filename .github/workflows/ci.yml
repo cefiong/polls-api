@@ -11,5 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - namey: Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Docker buildx
+        uses: docker/setup-buildx-action@v5
+
+      - name: Build docker image
+        run: |
+          docker build -t polls-api:latest .
+
+      - name: Run Container
+        run: |
+          docker -d -p 5000:5000 --name polls-api-container polls-api:latest

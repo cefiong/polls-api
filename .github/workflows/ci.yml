@@ -26,3 +26,22 @@ jobs:
           docker run -d -p 5001:5001 --name polls-api-container polls-api:latest
           sleep 5
           curl http://localhost:5001/api/health || exit 1
+
+      - name: Setup python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Unit test
+        run: |
+          pytest -v
+
+      - name: Cleanup
+        if: always()
+          run:
+            docker stop polls-api-container
+            docker rm polls-api-container

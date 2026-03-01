@@ -28,7 +28,7 @@ jobs:
           curl http://localhost:5001/api/health || exit 1
 
       - name: Setup python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
@@ -54,8 +54,8 @@ jobs:
 
       - name: Tag Docker image
         run: |
-          docker tag polls-api cefiong/polls-api:latest
-          docker tag polls-api cefiong/polls-api:${{ github.sha }}
+          docker tag polls-api:latest cefiong/polls-api:latest
+          docker tag polls-api:latest cefiong/polls-api:${{ github.sha }}
 
       - name: Push docker image to Docker hub
         run: |

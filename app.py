@@ -80,6 +80,10 @@ def create_app():
     def health():
         return jsonify({'status': 'healthy'}), 200
 
+    @app.route('/api/name', methods=['GET'])
+    def get_name():
+        return jsonify({'name': 'John Doe'}), 200
+
     return app
 
 if __name__ == '__main__':

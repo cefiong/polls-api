@@ -19,7 +19,7 @@ jobs:
 
       - name: Build docker image
         run: |
-          docker build --platform linux/amd64 -t cefiong/polls-api:latest .
+          docker build --platform linux/amd64 -t polls-api:latest .
 
       - name: Run Container
         run: |
@@ -59,8 +59,8 @@ jobs:
 
       - name: Push docker image to Docker hub
         run: |
-          docker push $IMAGE_NAME:latest
-          docker push $IMAGE_NAME:${{ github.sha }}
+          docker push cefiong/polls-api:latest
+          docker push cefiong/polls-api:${{ github.sha }}
 
       - name: Trigger Render redeploy
         run: |

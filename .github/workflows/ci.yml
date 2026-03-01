@@ -19,7 +19,7 @@ jobs:
 
       - name: Build docker image
         run: |
-          docker build --platform linux/amd64 -t polls-api:latest .
+          docker build -t polls-api:latest .
 
       - name: Run Container
         run: |

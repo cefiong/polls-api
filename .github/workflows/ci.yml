@@ -45,23 +45,3 @@ jobs:
         run: |
           docker stop polls-api-container
           docker rm polls-api-container
-
-      - name: Login to Docker
-        uses: docker/login-action@v3
-        with:
-          username: ${{secrets.DOCKERHUB_USERNAME}}
-          password: ${{secrets.DOCKERHUB_TOKEN}}
-
-      - name: Tag Docker image
-        run: |
-          docker tag polls-api:latest cefiong/polls-api:latest
-          docker tag polls-api:latest cefiong/polls-api:${{ github.sha }}
-
-      - name: Push docker image to Docker hub
-        run: |
-          docker push cefiong/polls-api:latest
-          docker push cefiong/polls-api:${{ github.sha }}
-
-      - name: Trigger Render redeploy
-        run: |
-          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}

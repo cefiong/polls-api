@@ -85,6 +85,26 @@ paths:
                     example: healthy
               example:
                 status: healthy
+  /api/dev_to_prod:
+    get:
+      tags:
+        - Dev2Prod
+      summary: Dev2Prod message
+      description: Print out Dev2Prod Message
+      security: []
+      responses:
+        "200":
+          description: API is working
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Hurry! We have completed the Dev to Prod Course
+              example:
+                status: Hurry! We have completed the Dev to Prod Course
 
   /api/auth/register:
     post:

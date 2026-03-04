@@ -61,7 +61,7 @@ jobs:
       - name: Push Image to Docker Hub
         run: |
           docker push cefiong/polls-api:latest
-          cefiong/polls-api:${{ github.sha }}
+          docker push cefiong/polls-api:${{ github.sha }}
 
       - name: Trigger Render Re-deploy
         run: |

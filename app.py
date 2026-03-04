@@ -59,6 +59,7 @@ def create_app():
             },
             'endpoints': {
                 'health': '/api/health',
+                'dev_to_prod': '/api/dev_to_prod',
                 'auth': {
                     'register': '/api/auth/register',
                     'login': '/api/auth/login'
@@ -80,7 +81,7 @@ def create_app():
     def health():
         return jsonify({'status': 'healthy'}), 200
 
-    @app.route("/api/dev_to_prod", method=['GET'])
+    @app.route("/api/dev_to_prod", methods=['GET'])
     def get_dev_to_prod():
         return jsonify({"message": "Hurry! We have completed the Dev to Prod Course"})
 
